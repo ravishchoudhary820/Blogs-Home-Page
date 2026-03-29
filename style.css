@@ -1,126 +1,220 @@
+/* --- Global Reset for clean layout --- */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; 
-  font-family: 'Fraunces', serif;
+  box-sizing: border-box; /* Prevents padding from breaking width calculations */
+  font-family: Roboto;
 }
 
-.header-container {
-  display: flex;  
-  justify-content: space-between; 
-  align-items: center; 
-  padding: 20px 5%; 
+/* --- Keep Header elements horizontal --- */
+header {
+  display: flex;
+  justify-content: space-between; /* Pushes logo left, nav right */
+  align-items: center; /* Centers them vertically */
+  padding: 20px;
 }
 
-#header-txt {
-  font-size: 24px;
-  font-weight: 700;
-  padding: 8px 15px;
-  border: 3px solid black;
-  border-radius: 5px;
-  cursor: pointer;
+#pic {
+  width: 270px;
+  height: auto
 }
 
 nav ul {
-  list-style-type: none; 
+  display: flex; /* Makes the list items stay in a row */
+  list-style: none; /* Removes bullet points */
+  gap: 20px; /* Modern spacing between links */
 }
 
-nav li {
-  display: inline-block;
-  margin-left: 30px; 
-}
 nav a {
-  text-decoration: none;
+  text-decoration: none; /* Removes underlines */
   color: black;
-  font-weight: 500;
-  transition: 0.3s; 
 }
 
-nav a:hover {
-  opacity: 0.6;
+/* --- New Image Container and Overlay --- */
+.image-container {
+  position: relative; 
+  width: 100%;
+  height: 400px; /* Limits the height so the image doesn't fill the whole screen */
+  overflow: hidden; /* Important for clean cropping */
 }
 
-#header-img {
-  display: block; 
-  margin: 0 auto; 
-  width: auto;
-  height: 600px; 
-  border-radius: 10px;
+#main-pic {
+  display: block;
+  width: 100%;
+  height: 100%; /* Fills the container completely */
+  object-fit: cover; /* CROPS the image instead of squishing it */
+  object-position: center; /* Keeps the center of the image visible */
+  filter: blur(5px); /* Keeps the blur from the last answer */
+}
+
+/* --- Text Overlay styling and centering --- */
+.text-overlay {
+  position: absolute; /* Allows us to place this anywhere in the container */
+  top: 50%;           /* These three lines are the 'magic' for... */
+  left: 50%;          /* ...perfectly centering an element... */
+  transform: translate(-50%, -50%); /* ...horizontally and vertically */
+  
+  text-align: center;
+  color: white;       /* Contrast: White text against the dark overlay */
+  width: 80%;         /* Keeps text from hitting the edges on small screens */
+}
+
+.text-overlay h1 {
+  font-size: 3rem;    /* Makes the headline nice and large */
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.image-container {
+  position: relative; /* Anchor for the text */
+  width: 100%;
+  height: 500px;      /* Set your desired height here */
+  overflow: hidden;
+}
+
+#main-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Prevents squishing */
+  filter: blur(4px) brightness(0.8); /* Blurring + Darkening helps the white text POP */
+  display: block;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;           /* Move top edge to the middle */
+  left: 50%;          /* Move left edge to the middle */
+  transform: translate(-50%, -50%); /* Pull it back by half its own size to hit the DEAD center */
+  
+  width: 90%;         /* Limits width so it doesn't hit the screen edges */
+  text-align: center;
+  z-index: 10;        /* Ensures it sits on top of everything */
+}
+
+.centered-blog-text {
+  color: white;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 3.5rem); /* Responsive size: gets smaller on phones, bigger on desktops */
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  
+  /* This shadow is the secret to making white text visible on a light blog background */
+  text-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+h2 {
+  text-align: center;
+
+}
+
+.nav {
+  color: #1a2b48;
+}
+
+/* 1. Target the UL (the container) to center everything inside it */
+section ul {
+  display: flex;         /* Makes the list items sit in a row */
+  justify-content: center; /* THIS is the magic: it centers the row horizontally */
+  align-items: center;   /* Centers them vertically if needed */
+  list-style: none;      /* Removes bullets */
+  padding: 40px 0;       /* Adds some nice breathing room above/below */
+  gap: 30px;             
+}
+
+.reach {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #1a2b48;       
+}
+
+header {
+  background-color: #D3D3D3,;
 }
 
 hr {
   margin: 20px 0;
-  border: solid 3px red
+  border: 2px solid #396ea3
 }
 
-.header-2 {
+.us {
   text-align: center;
-  font-size: 44px;
+  margin: 10px 571px 10px 571px;
+}
+
+@media screen and (max-width: 600px) {
+  .us {
+    margin: 10 20 10 20
+  }
+}
+
+footer > p {
+  font-size: 12px;
+  text-align: center;
   display: block;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 7px;
 }
 
-.descriptive {
-  font-size: 16px;
-  font-weight: 400;
-  text-align: center;
-  margin-left: 400px;
-  margin-right: 400px;
+#footer-top {
+  margin-top: 100px;
 }
 
-h1 {
-  text-align: center;
+footer {
+  background-color: #D3D3D3;
 }
 
-/* This code only runs on screens narrower than 600px (phones) */
-@media (max-width: 600px) {
-  
-  .descriptive {
-    margin: 20px; /* Gives a simple 20px gap on all sides */
-    position: static; /* Standard scrolling behavior */
-    text-align: center; /* Looks better on small screens */
-  }
-
-  #header-img {
-    width: 90%; /* Make the image bigger so it's readable on a phone */
-  }
-
-  .header-container {
-    flex-direction: column; /* Stacks your logo and nav vertically */
-    gap: 20px;
-  }
-}
-
-label {
-  display: block;
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-form {
+/* --- Standardized Header for All Pages --- */
+header {
   display: flex;
-  flex-direction: column; /* Stacks items top-to-bottom */
+  flex-direction: column; /* Stacks Logo on top of Nav */
   align-items: center;    /* Centers everything horizontally */
-  justify-content: center;
-  gap: 10px;              /* This creates the space between inputs automatically! */
-  width: 90%;             /* Good for phones */
-  max-width: 400px;       /* Good for computers */
-  margin: 0 auto;         /* Centers the whole form box on the page */
+  padding: 30px 20px;
+  background-color: #ffffff; /* Clean white background */
+  gap: 20px;               /* Space between logo and links */
+  border-bottom: 1px solid #eee; /* Optional: adds a subtle divider line */
 }
 
-input, textarea {
-  width: 100%;            /* Makes them all the same width */
-  padding: 10px;
-  text-align: center;     /* Centers the text you type inside */
-  border-radius: 5px;
-  border: 1px solid black;
+/* Logo Styling */
+#pic {
+  width: 280px;
+  height: auto;
+  display: block;
 }
 
-button {
-  padding: 10px 20px;
-  cursor: pointer;
-  background-color: #000;
-  color: #fff;
-  border-radius: 5px;
+/* Navigation Menu */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;              /* Spacing between menu items */
+  padding: 0;
+  margin: 0;
+}
+
+/* Navigation Links */
+.nav, nav ul li a {
+  text-decoration: none;
+  color: #1a2b48;         /* Signature InfoFlow Navy */
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav:hover, nav ul li a:hover {
+  color: #396ea3;         /* Subtle blue highlight on hover */
+}
+
+/* --- Mobile Fix for Header --- */
+@media screen and (max-width: 600px) {
+  #pic {
+    width: 220px;         /* Smaller logo for mobile screens */
+  }
+  
+  nav ul {
+    flex-wrap: wrap;      /* Allows links to wrap if screen is very narrow */
+    justify-content: center;
+    gap: 15px;
+  }
 }
