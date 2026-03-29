@@ -1,1 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+}
 
+header {
+  display: flex;
+  justify-content: space-between; /* Pushes logo left, nav right */
+  align-items: center; /* Centers them vertically */
+  padding: 20px;
+}
+
+#pic {
+  width: 270px;
+  height: auto
+}
+
+nav ul {
+  display: flex; /* Makes the list items stay in a row */
+  list-style: none; /* Removes bullet points */
+  gap: 20px; /* Modern spacing between links */
+}
+
+nav a {
+  text-decoration: none; /* Removes underlines */
+  color: black;
+}
+
+header {
+  display: flex;
+  flex-direction: column; /* Stacks Logo on top of Nav */
+  align-items: center;    /* Centers everything horizontally */
+  padding: 30px 20px;
+  background-color: #ffffff; /* Clean white background */
+  gap: 20px;               /* Space between logo and links */
+  border-bottom: 1px solid #eee; /* Optional: adds a subtle divider line */
+}
+
+/* Logo Styling */
+#pic {
+  width: 280px;
+  height: auto;
+  display: block;
+}
+
+/* Navigation Menu */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 30px;              /* Spacing between menu items */
+  padding: 0;
+  margin: 0;
+}
+
+/* Navigation Links */
+.nav, nav ul li a {
+  text-decoration: none;
+  color: #1a2b48;         /* Signature InfoFlow Navy */
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.nav:hover, nav ul li a:hover {
+  color: #396ea3;         /* Subtle blue highlight on hover */
+}
+
+/* --- Mobile Fix for Header --- */
+@media screen and (max-width: 600px) {
+  #pic {
+    width: 220px;         /* Smaller logo for mobile screens */
+  }
+  
+  nav ul {
+    flex-wrap: wrap;      /* Allows links to wrap if screen is very narrow */
+    justify-content: center;
+    gap: 15px;
+  }
+}
+
+.buttons {
+  text-decoration: none;
+  color: black;
+}
+
+div {
+  display: inline-block; /* Allows them to be side-by-side BUT act like boxes */
+  border: 2px solid #1a2b48; /* Using your Navy blue */
+  text-align: center;
+  padding: 30px;         /* Creates space INSIDE the rectangle */
+  margin: 20px;          /* Creates space OUTSIDE the rectangle */
+  width: 300px;          /* Sets a fixed width for the cards */
+  vertical-align: top;   /* Keeps cards aligned if text length varies */
+  border-radius: 8px;    /* Optional: Rounds the corners for a modern look */
+  transition: transform 0.3s ease; /* Makes them feel interactive */
+}
+
+div:hover {
+  transform: translateY(-5px); /* Lift effect when you hover over a course */
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+article {
+  text-align: center;
+}
+
+h1, #courses {
+  text-align: center;
+}
+
+footer > p {
+  font-size: 12px;
+  text-align: center;
+  display: block;
+  padding: 7px;
+}
+
+#footer-top {
+  margin-top: 100px;
+}
+
+footer {
+  background-color: #D3D3D3;
+}
